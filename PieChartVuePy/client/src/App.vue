@@ -1,31 +1,39 @@
 <template>
   <div id="app">
-    <!-- <dashboard/>
-    <piechart/> -->
+    <header>
+    <Navbar/>
+    </header>
+    <dashboard/>
     <router-view/>
   </div>
 </template>
 
 <script>
 import dashboard from './components/dashboard.vue'
-import piechart from './components/piechart.vue'
+import Navbar from './components/Navbar.vue'
 
 export default {
   name: 'App',
   components: {
     dashboard,
-    piechart
+    Navbar
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+body {
+font-family: 'montserrat', sans-serif;
+}
+
+header {
+  width:100vw;
+  background-color: #222;
+  padding: 15px
 }
 </style>

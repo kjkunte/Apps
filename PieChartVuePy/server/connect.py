@@ -11,7 +11,7 @@ app.config['MYSQL_DATABASE_DB']='testPython'
 app.config['MYSQL_DATABASE_HOST']='localhost'
 
 mysql = MySQL(app)
-# CORS(app)
+CORS(app)
 api = Api(app)
 
 
@@ -26,25 +26,25 @@ def get_all_severity():
     return jsonify({'data':data})
 
 
-@app.route('/api/severity', methods=['GET'])
-def get_week_severity():
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    cursor.execute("select * from severity where ")
-    data=cursor.fetchall()
-    # print()
-    # return data
-    return jsonify({'data':data})
+# @app.route('/api/severityWeekly', methods=['GET'])
+# def get_week_severity():
+#     conn = mysql.connect()
+#     cursor = conn.cursor()
+#     cursor.execute("select * from severity where ")
+#     data=cursor.fetchall()
+#     # print()
+#     # return data
+#     return jsonify({'data':data})
 
-@app.route('/api/severity', methods=['GET'])
-def get_today_severity():
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    cursor.execute("select * from severity where ")
-    data=cursor.fetchall()
-    # print()
-    # return data
-    return jsonify({'data':data})
+# @app.route('/api/severityMonthly', methods=['GET'])
+# def get_today_severity():
+#     conn = mysql.connect()
+#     cursor = conn.cursor()
+#     cursor.execute("select * from severity where ")
+#     data=cursor.fetchall()
+#     # print()
+#     # return data
+#     return jsonify({'data':data})
 
 if __name__ == '__main__':
     app.run(debug=True)

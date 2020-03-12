@@ -1,6 +1,7 @@
 <template>
-  <div class="hello">
-   </div>
+  <div>
+    <pie-chart :data="[['Nokia',50],['Samsung',150]]">  </pie-chart>
+  </div>
 </template>
 
 <script>
