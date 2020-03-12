@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flaskext.mysql import MySQL
 from flask_cors import CORS
 
@@ -18,8 +18,9 @@ def get_all_severity():
     cursor = conn.cursor()
     cursor.execute("select * from severity")
     data=cursor.fetchall()
-    # console.log(data)
-    print(data)
+    # print()
+    # return data
+    return jsonify({'data':data})
 
 if __name__ == '__main__':
     app.run(debug=True)
