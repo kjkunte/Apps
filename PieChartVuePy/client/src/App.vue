@@ -1,16 +1,20 @@
 <template>
   <div id="app">
-    <chart/>
+    <!-- <dashboard/>
+    <piechart/> -->
+    <router-view/>
   </div>
 </template>
 
 <script>
-import chart from './components/chart.vue'
+import dashboard from './components/dashboard.vue'
+import piechart from './components/piechart.vue'
 
 export default {
   name: 'App',
   components: {
-    chart
+    dashboard,
+    piechart
   }
 }
 </script>
