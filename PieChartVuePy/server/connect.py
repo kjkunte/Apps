@@ -12,7 +12,7 @@ app.config['MYSQL_DATABASE_HOST']='localhost'
 mysql = MySQL(app)
 CORS(app)
 
-@app.route('/api/severity', methods['GET'])
+@app.route('/api/severity', methods=['GET'])
 def get_all_severity():
     conn = mysql.connect()
     cursor = conn.cursor()
@@ -20,3 +20,6 @@ def get_all_severity():
     data=cursor.fetchall()
     # console.log(data)
     print(data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
