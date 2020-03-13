@@ -14,37 +14,17 @@ mysql = MySQL(app)
 CORS(app)
 api = Api(app)
 
-
-@app.route('/api/severity', methods=['GET'])
+# Error Handling has to be done
+@app.route('/api/severity/', methods=['GET'])
 def get_all_severity():
     conn = mysql.connect()
     cursor = conn.cursor()
-    cursor.execute("select * from severity")
+    cursor.execute("select severity, count(eventId) from severity group by severity")
     data=cursor.fetchall()
-    # print()
+    # print(data)
     # return data
-    return jsonify({'data':data})
+    return jsonify({'severity':data})
 
-
-# @app.route('/api/severityWeekly', methods=['GET'])
-# def get_week_severity():
-#     conn = mysql.connect()
-#     cursor = conn.cursor()
-#     cursor.execute("select * from severity where ")
-#     data=cursor.fetchall()
-#     # print()
-#     # return data
-#     return jsonify({'data':data})
-
-# @app.route('/api/severityMonthly', methods=['GET'])
-# def get_today_severity():
-#     conn = mysql.connect()
-#     cursor = conn.cursor()
-#     cursor.execute("select * from severity where ")
-#     data=cursor.fetchall()
-#     # print()
-#     # return data
-#     return jsonify({'data':data})
 
 if __name__ == '__main__':
     app.run(debug=True)

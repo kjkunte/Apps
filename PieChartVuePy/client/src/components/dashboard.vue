@@ -1,30 +1,51 @@
 <template>
   <div>
-    <pie-chart :data="[['Nokia',50],['Samsung',150]]">  </pie-chart>
+    <pie-chart :data="severity"></pie-chart>
+    <triggerApi @buttonClicked="severityFor = $event"> </triggerApi>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Dropdown from './Dropdown';
 export default {
- 
+ components: {
+    'triggerApi':Dropdown
+  },
  data() {
    return {
-     severity : []
+     severityFor :'',
+     severity : [
+      //  ['1']
+     ]
    } 
  },
  mounted() {
+   this.getSeverity1(this.severityFor)
    this.getSeverity()
  },
 
  methods: {
+  //  getSeverity1(abc) {
+  //    console.log(this.severityFor)
+  //    const path = `http://localhost:5000/api/severity/${abc}`
+  //   //  What is axios | What is its node equivalent
+  //    axios({method: 'GET', url: path}).then(
+  //      result => {
+  //        this.severity = result.data.severity;
+  //        console.log(this.severity);
+  //      },
+  //      error => {
+  //        console.error(error)
+  //      }
+  //    )
+  //  },
    getSeverity() {
-     const path = 'http://localhost:5000/api/severity';
-    //  What is axios | What is its node equivalent
+     const path = `http://localhost:5000/api/severity/`
      axios({method: 'GET', url: path}).then(
        result => {
-         console.log(result.data)
-         this.severity = result.data
+         this.severity = result.data.severity;
+         console.log(this.severity);
        },
        error => {
          console.error(error)
@@ -32,7 +53,6 @@ export default {
      )
    }
  }
-
 }
 </script>
 

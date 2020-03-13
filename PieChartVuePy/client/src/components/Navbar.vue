@@ -2,7 +2,7 @@
   <nav>
     <div class="menu-item"><a href="#">Home</a></div>
     <div class="menu-item"><a href="#">About</a></div>
-    <Dropdown title="Services" :items="services" />
+    <Dropdown title="Severity" :items="severityTypes" />
     <div class="menu-item"><a href="#">Contact</a></div>
   </nav>
 </template>
@@ -16,17 +16,20 @@ export default {
   },
   data () {
     return {
-      services: [
+      severityTypes: [
         {
-          title: 'Web',
+          id: 1,  
+          title: 'All',
           link: '#'
         },
         {
-          title: 'Design',
+          id: 2,  
+          title: 'Week',
           link:'#'
         },
         {
-          title: 'Videos',
+          id: 3,
+          title: 'Month',
           link: '#'
         }
       ]

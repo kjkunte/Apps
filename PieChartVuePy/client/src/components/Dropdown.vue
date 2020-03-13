@@ -1,7 +1,7 @@
 <template>
   <div class="menu-item" @click="isOpen = !isOpen">
     <a href="#">
-      {{ title }}
+     {{ this.severityFor }} 
     </a>
     <svg viewBox="0 0 1030 638" width="10">
       <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="#FFF"></path>
@@ -9,8 +9,13 @@
     <transition name="fade" appear>
       <div class="sub-menu" v-if="isOpen">
         <div v-for="(item, i) in items" :key="i" class="menu-item">
-          <a :href="item.link">{{ item.title }}</a>
+          <a v-on:click="handleClick()" v-bind:value="item.id">
+              {{ item.title }}
+              </a>
         </div>
+        <!-- <option v-for="(item, i) in items" :key="i" class="menu-item" v-bind:value="item.id" >
+            {{item.title}}
+        </option>  -->
       </div>
     </transition>
   </div>
@@ -22,7 +27,15 @@ export default {
   props: ['title', 'items'],
   data () {
     return {
+      severityFor : this.title,
       isOpen: false
+    }
+  },
+  methods :{
+    handleClick() {
+        // this.severityFor= item.id
+      console.log(this.severityFor);
+      this.$emit("buttonClicked", this.severityFor);
     }
   }
 }
