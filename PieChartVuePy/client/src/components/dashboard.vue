@@ -21,7 +21,7 @@ export default {
    } 
  },
  mounted() {
-   this.getSeverity1(this.severityFor)
+  //  this.getSeverity1(this.severityFor)
    this.getSeverity()
  },
 
