@@ -9,7 +9,7 @@
     <transition name="fade" appear>
       <div class="sub-menu" v-if="isOpen">
         <div v-for="(item, i) in items" :key="i" class="menu-item">
-          <a v-on:click="handleClick()" v-bind:value="item.id">
+          <a v-on:click="handleClick(item.id, $event)" v-bind:value="item.id">
               {{ item.title }}
               </a>
         </div>
@@ -32,9 +32,12 @@ export default {
     }
   },
   methods :{
-    handleClick() {
+    handleClick(item, event) {
+      // alert('Hello');
+      alert(event.target.tagName)
         // this.severityFor= item.id
-      console.log(this.severityFor);
+      console.log(item);
+
       this.$emit("buttonClicked", this.severityFor);
     }
   }
